@@ -8,10 +8,12 @@
     "start": "next start",
     "lint": "eslint app --ext ts,tsx,js,jsx --report-unused-disable-directives --max-warnings 0",
     "lint:fix": "eslint app --ext js,jsx,ts,tsx --fix",
-    "format": "prettier --write 'src/**/*.{js,jsx,ts,tsx,css,html}'",
+    "format": "prettier --write 'app/**/*.{js,jsx,ts,tsx,css,html}'",
     "prepare": "husky"
   },
   "dependencies": {
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-unused-imports": "^4.3.0",
     "next": "16.0.1",
     "react": "19.2.0",
     "react-dom": "19.2.0"
@@ -25,6 +27,7 @@
     "eslint-config-next": "16.0.1",
     "husky": "^9.1.7",
     "lint-staged": "^16.2.6",
+    "prettier": "^3.6.2",
     "tailwindcss": "^4",
     "typescript": "^5"
   },
