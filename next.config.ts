@@ -4,11 +4,11 @@ const isGithubPages = process.env.GITHUB_PAGES === 'true';
 const nextConfig = {
   output: 'export',
   trailingSlash: true, // Critical for GitHub Pages
- images: {
-    unoptimized: true, // Required
-    loader: 'default',
-    path: '',
-  },
+//  images: {
+//     unoptimized: true, // Required
+//     loader: 'default',
+//     path: '',
+//   },
   typescript: {
     ignoreBuildErrors: true, // Optional: only if you want to skip TS errors in CI
   },
