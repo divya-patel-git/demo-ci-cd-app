@@ -24,14 +24,9 @@
     "eslint": "^9",
     "eslint-config-next": "16.0.1",
     "husky": "^9.1.7",
+    "lint-staged": "^16.2.6",
     "tailwindcss": "^4",
     "typescript": "^5"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged",
-      "pre-push": "npm run lint && npm run format"
-    }
   },
   "lint-staged": {
     "app/**/*.{ts,tsx,js,jsx}": [
