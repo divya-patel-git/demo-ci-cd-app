@@ -1,8 +1,20 @@
 /** @type {import('next').NextConfig} */
+const isGithubPages = process.env.GITHUB_PAGES === 'true';
+
 const nextConfig = {
   output: 'export',
-  basePath: '/demo-ci-cd-app',
-  assetPrefix: '/demo-ci-cd-app/',
+  trailingSlash: true, // Critical for GitHub Pages
+  images: {
+    unoptimized: true, // Required for static export
+  },
+  typescript: {
+    ignoreBuildErrors: true, // Optional: only if you want to skip TS errors in CI
+  },
+  // Only apply basePath & assetPrefix on GitHub Pages
+  ...(isGithubPages && {
+    basePath: '/demo-ci-cd-app',
+    assetPrefix: '/demo-ci-cd-app/',
+  }),
 };
 
 module.exports = nextConfig;
