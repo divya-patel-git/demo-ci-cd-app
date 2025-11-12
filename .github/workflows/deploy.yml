@@ -10,8 +10,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
+      - uses: actions/checkout@v2
         with:
           persist-credentials: false
 
@@ -23,15 +22,35 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Build project
+      - name: Build
         run: npm run build
 
-      - name: Export static files
-        run: npm run export
-
-      - name: Deploy to GitHub Pages
+      - name: Deploy to prod url
+        # main is the branch name where new code is pushed
         if: github.ref == 'refs/heads/main'
-        uses: JamesIves/github-pages-deploy-action@v4
+
+        uses: JamesIves/github-pages-deploy-action@4.1.4
         with:
-          branch: gh-pages           # The branch to deploy to
-          folder: out                # The folder to deploy (from next export)
+          branch: gh-pages # The branch the action should deploy to.
+          folder:
+            out # The folder the action should deploy.
+
+
+            #for it to work for github pages. add followig props inside next.config.js file
+            # output: 'export',
+            # basePath: '/nextjs14-ci-cd',
+            # assetPrefix: '/nextjs14-ci-cd/',
+
+            # uses: peaceiris/actions-gh-pages@v3
+            # with:
+            #   github_token: ${{ secrets.GITHUB_TOKEN }}
+            #   publish_dir: ./dist
+            # publish_branch: prod-gh-pages  // by default it will create gh-pages branch and push everything of dist folder inside it.
+
+            # - name: Deploy to dev url
+            #   if: github.ref == 'refs/heads/develop'
+            #   uses: peaceiris/actions-gh-pages@v3
+            #   with:
+            #     github_token: ${{ secrets.GITHUB_TOKEN }}
+            #     publish_dir: ./dist
+            #     # publish_branch: dev-gh-pages
