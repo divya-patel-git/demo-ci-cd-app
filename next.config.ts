@@ -6,7 +6,7 @@ const nextConfig = {
   trailingSlash: true, // Critical for GitHub Pages
  images: {
     unoptimized: true, // Required
-    path: isGithubPages ? '/demo-ci-cd-app/' : '/', // Critical!
+    // path: isGithubPages ? '/demo-ci-cd-app/' : '/', // Critical!
   },
   typescript: {
     ignoreBuildErrors: true, // Optional: only if you want to skip TS errors in CI
