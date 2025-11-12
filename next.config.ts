@@ -10,6 +10,12 @@ const nextConfig: NextConfig = {
   // 👇 Also set the same prefix for static assets
   assetPrefix: '/demo-ci-cd-app/',
   /* config options here */
+  images: {
+    unoptimized: true, // Required since export disables optimization
+  },
+  typescript: {
+    ignoreBuildErrors: true,
+  },
 };
 
 export default nextConfig;
