@@ -7,22 +7,36 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint app --ext ts,tsx,js,jsx --report-unused-disable-directives --max-warnings 0",
-    "lint:fix":"eslint app --ext js,jsx,ts,tsx --fix",
-    "format":"prettier --write 'src/**/*.{js,jsx,ts,tsx,css,html}'"
+    "lint:fix": "eslint app --ext js,jsx,ts,tsx --fix",
+    "format": "prettier --write 'src/**/*.{js,jsx,ts,tsx,css,html}'",
+    "prepare": "husky"
   },
   "dependencies": {
+    "next": "16.0.1",
     "react": "19.2.0",
-    "react-dom": "19.2.0",
-    "next": "16.0.1"
+    "react-dom": "19.2.0"
   },
   "devDependencies": {
-    "typescript": "^5",
+    "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
-    "@tailwindcss/postcss": "^4",
-    "tailwindcss": "^4",
     "eslint": "^9",
-    "eslint-config-next": "16.0.1"
+    "eslint-config-next": "16.0.1",
+    "husky": "^9.1.7",
+    "tailwindcss": "^4",
+    "typescript": "^5"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "pre-push": "npm run lint && npm run format"
+    }
+  },
+  "lint-staged": {
+    "app/**/*.{ts,tsx,js,jsx}": [
+      "npm run lint",
+      "npm run format"
+    ]
   }
 }
